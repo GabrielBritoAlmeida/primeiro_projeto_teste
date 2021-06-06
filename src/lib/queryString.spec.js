@@ -9,4 +9,25 @@ describe("Object to query string", () => {
 
     expect(queryString(obj)).toBe("name=Fabio&profession=developer");
   });
+
+  it("must create a valid string, using a string and an array", () => {
+    const obj = {
+      name: "Fabio",
+      abilities: ["Js", "TDD"],
+    };
+
+    expect(queryString(obj)).toBe("name=Fabio&abilities=Js,TDD");
+  });
+
+  it("must create a valid string, using a string and an array", () => {
+    const obj = {
+      name: "Fabio",
+      abilities: {
+        first: "JS",
+        second: "TDD",
+      },
+    };
+
+    expect(() => queryString(obj)).toThrowError();
+  });
 });

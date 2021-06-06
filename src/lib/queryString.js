@@ -1,9 +1,10 @@
-module.exports.queryString = (obj) => {
-  const arrTotal = Object.entries(obj);
-  const arrMap = arrTotal.map((item) => {
-    return `${item[0]}=${item[1]}`;
-  });
-  const arrJoin = arrMap.join("&");
+module.exports.queryString = (obj) =>
+  Object.entries(obj)
+    .map(([key, value]) => {
+      if (typeof value === "object" && !Array.isArray(value)){
+        throw new Error("Please check you params");
+      }
 
-  return arrJoin;
-};
+      return `${key}=${value}`;
+    })
+    .join("&");
