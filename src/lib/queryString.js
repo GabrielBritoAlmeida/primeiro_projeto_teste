@@ -1,10 +1,13 @@
 module.exports.queryString = (obj) =>
   Object.entries(obj)
     .map(([key, value]) => {
-      if (typeof value === "object" && !Array.isArray(value)){
+      if (typeof value === "object" && !Array.isArray(value)) {
         throw new Error("Please check you params");
       }
 
       return `${key}=${value}`;
     })
     .join("&");
+
+module.exports.parse = (string) =>
+  Object.fromEntries(string.split("&").map((item) => item.split("=")));
