@@ -49,4 +49,13 @@ describe("Query string to object", () => {
       name: "Gabriel",
     });
   });
+
+  it("should convert a query string and a array", () => {
+    const qs = "name=Gabriel&abilities=Js,TDD";
+
+    expect(parse(qs)).toEqual({
+      name: "Gabriel",
+      abilities: ["Js", "TDD"],
+    });
+  });
 });
