@@ -1,4 +1,5 @@
-export function queryString(obj)  {   return Object.entries(obj)
+export function queryString(obj) {
+  return Object.entries(obj)
     .map(([key, value]) => {
       if (typeof value === "object" && !Array.isArray(value)) {
         throw new Error("Please check you params");
@@ -6,9 +7,11 @@ export function queryString(obj)  {   return Object.entries(obj)
 
       return `${key}=${value}`;
     })
-    .join("&");   }
+    .join("&");
+}
 
-export function parse(string)  {   return Object.fromEntries(
+export function parse(string) {
+  return Object.fromEntries(
     string.split("&").map((item) => {
       let [key, value] = item.split("=");
 
@@ -18,4 +21,5 @@ export function parse(string)  {   return Object.fromEntries(
 
       return [key, value];
     })
-  );   }
+  );
+}
